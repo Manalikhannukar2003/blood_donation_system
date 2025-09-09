@@ -18,7 +18,8 @@ urlpatterns = [
      path("donor/<str:name>/", views.donor_detail, name="donor_detail"),
      path('logout/', views.logout_view, name='logout'),
      path('about_us/',views.about_us, name='about_us'),
-
+     path('dashboard/', views.dashboard, name='dashboard'),
+    
 ]
 
 
