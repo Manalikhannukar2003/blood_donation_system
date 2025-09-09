@@ -179,3 +179,70 @@ def logout_view(request):
     return redirect('home')  # redirect back to home page
 
 
+# from django.shortcuts import render
+# from .ml_model import train_model, predict_donors
+
+# def donor_ai_view(request):
+#     requested_bg = request.GET.get("blood_group", "A+")  # default A+
+
+#     model = train_model(requested_bg)
+#     predictions = predict_donors(model, requested_bg) if model else []
+
+#     return render(request, "donor_ai.html", {
+#         "predictions": predictions,
+#         "requested_bg": requested_bg
+#     })
+
+
+# from django.shortcuts import render
+# from .ml.blood_group_prediction import predict_next_donor  # ML function
+
+# def dashboard(request):
+#     df = predict_next_donor()  # Run ML code
+#     data = df.to_dict(orient='records') if not df.empty else []
+#     return render(request, "dashboard.html", {"data": data})
+
+# from django.shortcuts import render
+# from .models import Donor
+# from .ml.blood_group_prediction import predict_next_donor  # ML function
+
+# def dashboard(request):
+#     # Count donors by blood group
+#     blood_counts = {}
+#     for donor in Donor.objects.all():
+#         group = donor.blood_group
+#         blood_counts[group] = blood_counts.get(group, 0) + 1
+
+#     # Run ML prediction (returns a dictionary)
+#     predictions = predict_next_donor(blood_counts)
+
+#     # Convert into list of dicts for easy template looping
+#     data = []
+#     for group, pred in predictions.items():
+#         data.append({
+#             "group": group,
+#             "predicted": pred
+#         })
+
+#     return render(request, "dashboard.html", {"data": data})
+
+
+from django.shortcuts import render
+from .ml.blood_group_prediction import predict_next_donor
+
+def dashboard(request):
+    df = predict_next_donor()  # returns DataFrame with blood_group & probability
+    data = df.to_dict(orient="records") if not df.empty else []
+
+    # Prepare separate lists for JS
+    blood_groups = [row['blood_group'] for row in data]
+    probabilities = [row['probability'] for row in data]
+
+    return render(request, "dashboard.html", {
+        "blood_groups": blood_groups,
+        "probabilities": probabilities
+    })
+
+
+
+
