@@ -18,11 +18,11 @@
 <style>
 .brand-title {
   color:rgba(237, 106, 174, 0.725);              /* Change text color */
-  text-align: center;          /* Optional: center it */
+  text-align: center;                              /* Optional: center it */
   font-weight:10;           
   font-family: Arial, sans-serif;
-  /* position: relative;          Needed for the underline */
-  display: inline-block;       /* Keeps underline same width as text */
+                                              
+  display: inline-block;                            /* Keeps underline same width as text */
   margin:0;
 }
 .tagline {
@@ -48,8 +48,10 @@
               <a class="nav-link" href="{% url 'about_us' %}" style="color:white;">About</a>
               <a class="nav-link" href="{% url 'become_donor' %}" style="color:white;">Become a Donor</a>
               <a class="nav-link" href="{% url 'Requestor' %}" style="color:white;">Requestor</a>
+              <a class="nav-link" href="{% url 'dashboard'%}" style="color:white;">dashboard</a>
               
-              <!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
+              
+             
             </div>
           </div>
         </div>
@@ -68,7 +70,7 @@
       <h1 style="color: red; text-align: center;">Welcome to CrimsonCare</h1>
       
       
-        <!-- Carousel (place it below the heading or wherever you want) -->
+        <!-- Carousel -->
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
@@ -97,6 +99,7 @@
 
    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <!--footer-->
     <footer style="background-color: #191010; color: #fff; padding: 30px 0; text-align: center; margin-top: 50px;">
       <div style="max-width: 900px; margin: auto;">
           <p><strong>CrimsonCare</strong> – Connecting donors with those in need</p>
